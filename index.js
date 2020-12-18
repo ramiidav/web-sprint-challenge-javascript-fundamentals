@@ -18,7 +18,7 @@ myFunction();
 
 //🚀🚀🚀 ⬇️ 📝 Explanation ⬇️ 📝 🚀🚀🚀: 
 
-
+// A nested function is inside of myFunction where const internal is declared 
 
 
 
@@ -29,10 +29,16 @@ myFunction();
     
 For example, `summation(4)` should return 10 because 1+2+3+4 is 10. Note, you may use a for loop for this function if you wish */
 
-function summation(/*Your Code Here*/) {
-  /*Your Code Here*/
-
+function summation(num) {
+  if(num < 0){
+    num = num*-1;
   }
+  newNum = 0;
+  for(i = 0; i <= num; i++){
+    newNum += i;
+  }
+    return newNum; 
+}
  
 
 // 🦁🦁🦁 Topic 2: ADVANCED Array Methods 🦁🦁🦁
@@ -57,9 +63,18 @@ const zooAnimals = [
   displayNames will be an array of strings, and each string should follow this pattern: "name: {name}, scientific: {scientific name}"
   */
 
-  function animalNames(/*Your Code Here*/){
-    /*Your Code Here*/
-  }
+ function animalNames(zooAnimals){
+  const displayNames = [];
+  zooAnimals.forEach((item) => {
+    displayNames.push({
+      'name':item.animal_name,
+      'scientific': item.scientific_name
+    });
+    
+  });
+  return displayNames;
+
+}
   
 
   /* 🦁🦁🦁 Request 2: .map() 🦁🦁🦁
@@ -68,9 +83,12 @@ const zooAnimals = [
   For example: ['jackal, asiatic', .....]
   */
 
-  function lowerCaseNames(/*Your Code Here*/){
-    /*Your Code Here*/
-  }
+ function lowerCaseNames(array){
+  const smallNames = array.map((item)=> item.animal_name.toLowerCase());
+  return smallNames;
+  
+
+}
   
   
   /* 🦁🦁🦁 Request 3: .filter() 🦁🦁🦁
@@ -78,9 +96,10 @@ const zooAnimals = [
   Using lowPopulationAnimals use .filter() to create a new array of objects which contains only the animals with a population of less than 5.
   */
 
-  function lowPopulationAnimals(/*Your Code Here*/){
-    /*Your Code Here*/
-  }
+ function lowPopulationAnimals(array){
+  const endangered = array.filter((item) => item.population < 5);
+  return endangered;
+}
   
 
   /* 🦁🦁🦁 Request 4: .reduce() 🦁🦁🦁
@@ -89,9 +108,11 @@ const zooAnimals = [
   Remember the reduce method takes two arguments: a callback (which itself takes two args - the accumulator and the item), and an initial value for the count.
   */
 
-  function USApop(/*Your Code Here*/){
-    /*Your Code Here*/
-  }
+ function USApop(array){
+  const population = array.reduce((total, item) => {return total + item.population},0);
+  return population;
+
+}
   
   
   // 🦁🦁🦁 Callbacks 🦁🦁🦁  
@@ -102,29 +123,29 @@ const zooAnimals = [
     * The consume function should return the invocation of cb, passing a and b into cb as arguments
   */
 
-  function consume(/*Your Code Here */){
-    /*Your Code Here */
-  }
+ function consume(a,b,cb){
+  return cb(a,b);
+ }
  
   
   /* 🦁🦁🦁 Step 2: Create several functions to callback with consume(); 🦁🦁🦁 */
  // 🦁🦁🦁 Use add to return the sum of two numbers 🦁🦁🦁
   
-function add(/*Your Code Here */){
-    /*Your Code Here*/
-  }
+ function add(){
+  return a + b;
+}
 
 // 🦁🦁🦁 Use multiply to return the product of two numbers 🦁🦁🦁
   
-function multiply(/*Your Code Here */){
-   /*Your Code Here */
-  }
+function multiply(){
+  return a * b;
+ }
 
  // 🦁🦁🦁 Use greeting to accept a first and last name and return "Hello {first-name} {last-name}, nice to meet you!" 🦁🦁🦁
   
-function greeting(/*Your Code Here */){
-   return /*Your Code Here */
-  }
+ function greeting(){
+  return `Hello ${a} ${b}, nice to meet you!`;
+ }
   
   // 🦁🦁🦁 Step 3: Check your work by un-commenting the following calls to consume(): 🦁🦁🦁 
   // ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️
@@ -144,8 +165,13 @@ function greeting(/*Your Code Here */){
 /* 🐴🐴🐴 Step 1: Base Constructor 🐴🐴🐴
  Use the constructor function named CuboidMaker to accept properties for length, width, and height which can be initialized as an object
 */
-function CuboidMaker(/*Your Code Here */){
+function CuboidMaker(itemLength, width, height){
   /*Your Code Here */
+  this.itemLength = itemLength;
+  this.width =width;
+  this.height =height;
+    
+ 
 }
 
 
@@ -156,12 +182,10 @@ function CuboidMaker(/*Your Code Here */){
 
 
 
-
 /* 🐴🐴🐴 Step 3: Surface Area Method 🐴🐴🐴
   Create another method called surfaceArea using CuboidMaker's prototype that returns the surface area of a given cuboid's length, width, and height. 
   Formula for cuboid surface area of a cube: 
   2 * (length * width + length * height + width * height)  */
-
 
 
 
@@ -182,9 +206,6 @@ function CuboidMaker(/*Your Code Here */){
 
 // 🦄🦄🦄 Topic 4: Classes 🦄🦄🦄 //
 //🦄🦄🦄 1. Take your prototypes from above and refactor into class syntax. Please rename your class CuboidMakerTwo and your object cuboidTwo 🦄🦄🦄
-class CuboidMakerTwo{
-
-}
 
 
 //🦄🦄🦄 Test your volume and surfaceArea methods by uncommenting the logs below: 🦄🦄🦄
